@@ -138,7 +138,8 @@
     </div>
   </div>
   <div class="card-container">
-    <div class="card card-small" tabindex={{i}} *ngFor="let state of states; let i = index"><span>{{state.state}}</span></div>
+    <div class="card card-small" tabindex={{i}} *ngFor="let state of states; let i = index"><span (click)="getAllCities(state.state)">{{state.state}}</span></div>
+    <div class="card card-small" tabindex={{i}} *ngFor="let city of cities; let i = index"><span>{{city.city}}</span></div>
   </div>
   <!-- Terminal -->
   <div class="terminal" [ngSwitch]="selection.value">
