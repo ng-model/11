@@ -50,4 +50,18 @@ export class WeatherService {
       );
   }
 
+  public nearMeClimate(): Observable<any> {
+    const apiUrl = `${environment.apiUrl}nearest_city`;
+    return this.http
+      .get(apiUrl, {
+        params: {
+          key: environment.apiKey,
+        }
+      })
+      .pipe(
+        catchError(error => {
+          throw new Error(`error in the api ${error}`);
+        })
+      );
+  }
 }
