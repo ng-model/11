@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/operators';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,23 @@ export class WeatherService {
     return this.http
       .get(apiUrl, {
         params: {
+          country: 'india',
+          key: environment.apiKey,
+        }
+      })
+      .pipe(
+        catchError(error => {
+          throw new Error(`error in the api ${error}`);
+        })
+      );
+  }
+
+  public getCities(selectedState): Observable<any> {
+    const apiUrl = `${environment.apiUrl}cities`;
+    return this.http
+      .get(apiUrl, {
+        params: {
+          state: selectedState,
           country: 'india',
           key: environment.apiKey,
         }
