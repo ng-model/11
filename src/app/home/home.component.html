@@ -137,7 +137,9 @@
       <span>Build for Production</span>
     </div>
   </div>
-
+  <div class="card-container">
+    <div class="card card-small" tabindex={{i}} *ngFor="let state of states; let i = index"><span>{{state.state}}</span></div>
+  </div>
   <!-- Terminal -->
   <div class="terminal" [ngSwitch]="selection.value">
       <pre *ngSwitchDefault>ng generate component xyz</pre>
